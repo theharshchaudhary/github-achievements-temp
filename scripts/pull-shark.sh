@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Opens and merges N pull requests sequentially to progress the "Pull Shark" badge.
 # Usage: scripts/pull-shark.sh [count]   (default: 5)
+# Set COAUTHORS to add Co-authored-by trailers (one "Name <email>" per line), e.g.
+#   COAUTHORS="Octocat <octocat@github.com>" scripts/pull-shark.sh 5
 set -euo pipefail
 
 COUNT="${1:-5}"
@@ -18,7 +20,14 @@ for i in $(seq 1 "$COUNT"); do
   git checkout -q -b "$branch"
   echo "Entry $i at $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> log/pull-shark.log
   git add log/pull-shark.log
-  git commit -q -m "Pull Shark: add log entry $i"
+  msg="Pull Shark: add log entry $i"
+  if [ -n "${COAUTHORS:-}" ]; then
+    msg+=$'\n'
+    while IFS= read -r who; do
+      if [ -n "$who" ]; then msg+=$'\n'"Co-authored-by: $who"; fi
+    done <<< "$COAUTHORS"
+  fi
+  git commit -q -m "$msg"
   git push -q -u origin "$branch"
 
   pr=$("$GH" pr create --base main --head "$branch" \
