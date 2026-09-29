@@ -5,3 +5,8 @@ Temporary repository for GitHub workflow practice.
 ## Changelog
 
 - Added changelog section.
+
+## Contributors
+
+- theharshchaudhary
+- Octocat
