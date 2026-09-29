@@ -10,3 +10,4 @@ Temporary repository for GitHub workflow practice.
 
 - theharshchaudhary
 - Octocat
+- Claude

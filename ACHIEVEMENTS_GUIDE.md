@@ -7,7 +7,7 @@
 | Quickdraw | Closed issue #1 within seconds of opening it | Done |
 | YOLO | Merged PR #2 without a review (bypassed a required-review rule as admin) | Done |
 | Pair Extraordinaire | Merged PR #3 with a `Co-authored-by:` commit trailer | Done |
-| Pull Shark | 8 merged PRs (#2–#9) | Bronze (2) reached |
+| Pull Shark | 10 merged PRs (#2–#11) | Bronze (2) reached |
 | Galaxy Brain | Accepted answers in Discussions | Manual — see below |
 | Starstruck | Stars on a repository you own | Manual — see below |
 
